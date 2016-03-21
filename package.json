@@ -1,12 +1,12 @@
 {
-  "name": "Chaff",
+  "name": "@wiwo/Chaff",
   "version": "0.1.0",
   "description": "Easy object mocking for Typescript (and Javascript)",
   "main": "Chaff.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gwash3189/Chaff.git"
+    "url": "https://github.com/widgetworks/Chaff.git"
   },
   "keywords": [
     "Chaff",
