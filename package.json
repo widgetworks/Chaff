@@ -1,5 +1,5 @@
 {
-  "name": "@wiwo/Chaff",
+  "name": "@wiwo/chaff",
   "version": "0.1.0",
   "description": "Easy object mocking for Typescript (and Javascript)",
   "main": "Chaff.js",
