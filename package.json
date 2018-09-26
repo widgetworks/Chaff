@@ -4,7 +4,10 @@
   "description": "Easy object mocking for Typescript (and Javascript)",
   "main": "Chaff.js",
   "scripts": {
-    "build": "grunt typescript",
+    "build": "npm run build:lib && grunt uglify",
+    "build:lib": "tsc -p src/Chaff/tsconfig.json",
+    "build:test": "tsc -p src/tests/tsconfig.json",
+    "build:grunt": "grunt typescript",
     "test": "mocha src/tests/tests.js"
   },
   "repository": {
@@ -30,6 +33,7 @@
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-typescript": "^0.8.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "typescript": "^3.0.3"
   }
 }

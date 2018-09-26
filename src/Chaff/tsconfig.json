@@ -1,0 +1,8 @@
+{
+	"compilerOptions": {
+        "declaration": true,
+        "target": "es5",
+        // Coridyn: Keep legacy nested output structure so we don't break downstream projects
+        "outDir": "../../dist/src/Chaff"
+    }
+}
