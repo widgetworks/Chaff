@@ -1,4 +1,7 @@
 module Chaff {
+    export interface Constructable<T> {
+        new(): T;
+    }
     export interface ITest<Subject> {
         Mock: Chaff.Mock<Subject>;
     }
