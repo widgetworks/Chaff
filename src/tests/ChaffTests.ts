@@ -1,7 +1,10 @@
 ///<reference path="./../Chaff/Chaff.ts" />
 declare var describe;
 declare var it;
-declare var expect;
+declare var require;
+
+const expect = require('expect');
+
 
 class Person {
 	private Name: string;
