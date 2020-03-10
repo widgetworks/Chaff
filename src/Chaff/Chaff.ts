@@ -1,4 +1,4 @@
-module Chaff {
+namespace Chaff {
     export interface Constructable<T> {
         new(...args: any[]): T;
     }
@@ -117,5 +117,4 @@ module Chaff {
     }
 }
 
-
-
+export default Chaff;

@@ -1,6 +1,16 @@
 {
     "compilerOptions": {
+        "moduleResolution": "node",
+        "baseUrl": "../../",
+        "paths": {
+            // In tests, resolve this project to the base package.json
+            "@wiwo/chaff": [
+                "./"
+            ]
+        },
         "target": "es5",
-        "outFile": "tests.js"
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true
     }
 }

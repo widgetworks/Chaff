@@ -1,4 +1,5 @@
-///<reference path="./../Chaff/Chaff.ts" />
+import Chaff from '@wiwo/chaff';
+
 declare var describe;
 declare var it;
 declare var require;
