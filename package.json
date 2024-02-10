@@ -30,7 +30,7 @@
   "homepage": "https://github.com/Gwash3189/Chaff",
   "devDependencies": {
     "expect": "^1.20.2",
-    "mocha": "^5.2.0",
+    "mocha": "^10.3.0",
     "typescript": "^3.7.2"
   }
 }
