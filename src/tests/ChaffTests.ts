@@ -1,10 +1,10 @@
-import Chaff from '@wiwo/chaff';
+import Chaff from '../Chaff/Chaff.js';
+import expect from 'expect';
 
 declare var describe;
 declare var it;
 declare var require;
 
-const expect = require('expect');
 
 
 class Person {

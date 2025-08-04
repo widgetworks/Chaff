@@ -4,6 +4,7 @@
   "description": "Easy object mocking for Typescript (and Javascript)",
   "main": "dist/Chaff.js",
   "typings": "dist/Chaff.d.ts",
+  "type": "module",
   "scripts": {
     "build": "npm run build:lib",
     "build:lib": "tsc -p src/Chaff/tsconfig.json",

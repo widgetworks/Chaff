@@ -2,7 +2,7 @@
 	"compilerOptions": {
         "declaration": true,
         "rootDir": ".",
-        "target": "es5",
+        "target": "ES2016",
         "module": "esnext",
         "outDir": "../../dist"
     }

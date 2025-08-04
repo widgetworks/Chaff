@@ -8,8 +8,8 @@
                 "./"
             ]
         },
-        "target": "es5",
-        "module": "CommonJS",
+        "target": "ES2016",
+        "module": "ESNext",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true
     }
