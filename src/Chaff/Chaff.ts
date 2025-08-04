@@ -1,3 +1,5 @@
+import { getFunctionType } from './util.js';
+
 namespace Chaff {
     export interface Constructable<T> {
         new(...args: any[]): T;
@@ -106,13 +108,30 @@ namespace Chaff {
          * In future we'll be able to use `Reflect.construct`:
          * Reflect.construct(this.ConstructorFunction, Args);
          * 
+         * 2025-08-04 - yay, it's the future and we can use `Reflect.construct()` to support es6 classes now
+         * 
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct
          */
         private MakeType(Args?:Array<any>):T {
-            var holder = Object.create(this.ConstructorFunction.prototype);
-            this.ConstructorFunction.apply(holder, Args);
+            let instance: T;
             
-            return holder;
+            const fnType = getFunctionType(this.ConstructorFunction);
+            if (fnType === 'class'){
+                /**
+                 * Invoke like `new ConstructorFunction(...Args)`
+                 */
+                instance = Reflect.construct(this.ConstructorFunction, Args);
+            } else {
+                /**
+                 * ConstructorFunction is some sort of "regular" function (`function(){}`, `() => {}`, or async)
+                 * 
+                 * Invoke the function on the `instance` object
+                 */
+                instance = Object.create(this.ConstructorFunction.prototype);
+                this.ConstructorFunction.apply(instance, Args);
+            }
+            
+            return instance;
         }
     }
 }
