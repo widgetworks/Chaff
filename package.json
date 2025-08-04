@@ -10,7 +10,7 @@
     "build:lib": "tsc -p src/Chaff/tsconfig.json",
     "build:test": "tsc -p src/tests/tsconfig.json",
     "build:all": "npm run build && npm run build:test",
-    "test": "mocha src/tests/ChaffTests.js"
+    "test": "mocha src/tests/ChaffTests.ts src/tests/util/util.tests.ts"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
   "homepage": "https://github.com/Gwash3189/Chaff",
   "devDependencies": {
     "expect": "^1.20.2",
-    "mocha": "^5.2.0",
+    "mocha": "^11.7.1",
+    "tsx": "^4.20.3",
     "typescript": "^3.7.2"
   }
 }

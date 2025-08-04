@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
+        "noEmit": true,
         "moduleResolution": "node",
+        "inlineSourceMap": true,
         "baseUrl": "../../",
         "paths": {
             // In tests, resolve this project to the base package.json
