@@ -1,3 +1,4 @@
+import { getFunctionType } from './util.js';
 var Chaff;
 (function (Chaff) {
     /**
@@ -45,31 +46,31 @@ var Chaff;
         return new Mock(Type);
     }
     Chaff.of = of;
-    var Mock = /** @class */ (function () {
-        function Mock(ConstructorFunction) {
+    class Mock {
+        constructor(ConstructorFunction) {
             this.ConstructorFunction = ConstructorFunction;
         }
-        Mock.prototype.With = function (mutator) {
+        With(mutator) {
             mutator(this.MakeSubject());
             return this;
-        };
-        Mock.prototype.ConstructWith = function (Args) {
+        }
+        ConstructWith(Args) {
             this.Args = Args;
             return this;
-        };
-        Mock.prototype.Private = function (mutator) {
+        }
+        Private(mutator) {
             mutator(this.MakeSubject());
             return this;
-        };
-        Mock.prototype.Create = function () {
+        }
+        Create() {
             return this.MakeSubject();
-        };
-        Mock.prototype.MakeSubject = function () {
+        }
+        MakeSubject() {
             if (!this.CreatedType) {
                 this.CreatedType = this.MakeType(this.Args || []);
             }
             return this.CreatedType;
-        };
+        }
         /**
          * Construct and return a new instance of the type
          *
@@ -83,20 +84,36 @@ var Chaff;
          * In future we'll be able to use `Reflect.construct`:
          * Reflect.construct(this.ConstructorFunction, Args);
          *
+         * 2025-08-04 - yay, it's the future and we can use `Reflect.construct()` to support es6 classes now
+         *
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct
          */
-        Mock.prototype.MakeType = function (Args) {
-            var holder = Object.create(this.ConstructorFunction.prototype);
-            this.ConstructorFunction.apply(holder, Args);
-            return holder;
-        };
-        Mock.w = Chaff.w;
-        Mock.wrap = Chaff.wrap;
-        Mock.u = Chaff.u;
-        Mock.unwrap = Chaff.unwrap;
-        Mock.of = Chaff.of;
-        return Mock;
-    }());
+        MakeType(Args) {
+            let instance;
+            const fnType = getFunctionType(this.ConstructorFunction);
+            if (fnType === 'class') {
+                /**
+                 * Invoke like `new ConstructorFunction(...Args)`
+                 */
+                instance = Reflect.construct(this.ConstructorFunction, Args);
+            }
+            else {
+                /**
+                 * ConstructorFunction is some sort of "regular" function (`function(){}`, `() => {}`, or async)
+                 *
+                 * Invoke the function on the `instance` object
+                 */
+                instance = Object.create(this.ConstructorFunction.prototype);
+                this.ConstructorFunction.apply(instance, Args);
+            }
+            return instance;
+        }
+    }
+    Mock.w = Chaff.w;
+    Mock.wrap = Chaff.wrap;
+    Mock.u = Chaff.u;
+    Mock.unwrap = Chaff.unwrap;
+    Mock.of = Chaff.of;
     Chaff.Mock = Mock;
 })(Chaff || (Chaff = {}));
 export default Chaff;

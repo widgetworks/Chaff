@@ -52,6 +52,8 @@ declare namespace Chaff {
          * In future we'll be able to use `Reflect.construct`:
          * Reflect.construct(this.ConstructorFunction, Args);
          *
+         * 2025-08-04 - yay, it's the future and we can use `Reflect.construct()` to support es6 classes now
+         *
          * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct
          */
         private MakeType;
